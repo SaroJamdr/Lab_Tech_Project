@@ -3,8 +3,9 @@ from categories .models import Category
 
 class Service(models.Model):
     name = models.CharField(max_length=100)
-    category= models.ManyToManyField(Category, related_name='service_categories')
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    category= models.ManyToManyField(Category, related_name='service_categories')
+    sub_category= models.ManyToManyField(Category, related_name='service_sub_categories')
     tags= models.CharField(max_length=100)
     description = models.TextField()
     feature_image = models.ImageField(upload_to='services')

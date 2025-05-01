@@ -16,7 +16,6 @@ class ServiceSerializer(serializers.ModelSerializer):
         categories = attrs.get('category', [])
         sub_categories = attrs.get('sub_category', [])
 
-        # Ensure each sub-category has its parent in selected categories
         invalid_subs = [
             sub for sub in sub_categories
             if sub.parent not in categories

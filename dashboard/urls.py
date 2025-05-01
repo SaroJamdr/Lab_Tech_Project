@@ -1,6 +1,6 @@
 from django.urls import path
-from .viewsets.revenue_viewsets import RevenueChartAPIView
+from .viewsets.dashboard_viewsets import DashboardView
 
 urlpatterns = [
-    path('revenue', RevenueChartAPIView.as_view(), name='revenue-chart'),
+    path('dashboard', DashboardView.as_view(), name='dashboard'),
 ]

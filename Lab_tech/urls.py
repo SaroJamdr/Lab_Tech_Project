@@ -18,6 +18,7 @@ from inquiries.routers.routers import router as inquiries_router
 from pop_ups.routers.routers import router as pop_ups_router
 from  social_media.routers.routers import router as social_media_router
 from teams.routers.routers import router as teams_router
+from revenue.routers.routers import router as revenue_router
 
 router= DefaultRouter()
 router.registry.extend(services_router.registry)
@@ -31,6 +32,7 @@ router.registry.extend(faqs_router.registry)
 router.registry.extend(pop_ups_router.registry)
 router.registry.extend(social_media_router.registry)
 router.registry.extend(teams_router.registry)
+router.registry.extend(revenue_router.registry)
 
 schema_view = get_schema_view(
    openapi.Info(

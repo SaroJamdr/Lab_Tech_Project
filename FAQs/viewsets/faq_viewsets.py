@@ -11,13 +11,3 @@ class FAQViewSet(viewsets.ModelViewSet):
     serializer_class = FAQSerializer
     permission_classes = [IsAdminUser]
     
-    # def get_queryset(self):
-    #     return super().get_queryset()
-    #     return queryset
-    
-    # def get_serializer_class(self):
-    #     if self.action in ['create', 'update', 'partial_update']:
-    #         return FAQWriteSerializer
-    #     elif self.action == 'retrive':
-    #         return FAQRetriveSerializer
-    #     return super().get_serializer_class()

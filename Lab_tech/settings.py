@@ -20,7 +20,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'appointments', 'banners', 'branches', 'categories', 'gallery',
     'pop_ups', 'services', 'social_media', 'teams', 'inquiries', 'FAQs',
-    'accounts','smart_selects', 
+    'accounts', 'revenue', 'dashboard',
     'django_rest_passwordreset'
 
 ]
