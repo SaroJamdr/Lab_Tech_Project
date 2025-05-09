@@ -25,7 +25,7 @@ It streamlines the process of scheduling lab tests and hospital visits, making h
 - Virtualenv (recommended)
 
 ### Installation
-
+```bash
 # Clone the repository
 git clone https://github.com/SaroJamdr/Lab_Tech_Project.git
 cd Lab_Tech_Project
