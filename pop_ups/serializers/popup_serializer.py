@@ -4,23 +4,21 @@ from ..models import PopUp, PopUpData
 class PopUpDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = PopUpData
-        fields = ['id', 'title', 'image', 'link']
-        
+        fields = ['id', 'title', 'image', 'link']    
 
 class PopUpSerializer(serializers.ModelSerializer):
     popup_images = PopUpDataSerializer(many=True, read_only=True)
-    uploaded_images = serializers.ListField(
+    uploaded = serializers.ListField(
         child=serializers.DictField(), write_only=True, required=False
     )
-
     class Meta:
         model = PopUp
-        fields = ['id', 'popup_images', 'uploaded_images']
+        fields = ['id', 'popup_images', 'uploaded']
 
     def create(self, validated_data):
-        uploaded_images = validated_data.pop('uploaded_images', [])
+        uploaded = validated_data.pop('uploaded', [])
         popup = PopUp.objects.create(**validated_data)
-        for data in uploaded_images:
+        for data in uploaded:
             PopUpData.objects.create(
                 popup=popup,
                 title=data.get('title', ''),

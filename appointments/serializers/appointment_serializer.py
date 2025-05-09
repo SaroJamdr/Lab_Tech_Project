@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from ..models import Appointment
-from categories.serializers.categories_serializer import CategorySerializer
 from services.models import Service
 import re
 from categories.models import Category
@@ -17,7 +16,16 @@ class ServiceDetailSerializer(serializers.ModelSerializer):
         model = Service
         fields = ['name', 'category', 'price']
 
-class AppointmentSerializer(serializers.ModelSerializer):
+class AppointmentWriteSerializer(serializers.ModelSerializer):
+    service = ServiceDetailSerializer(many=True, read_only=True)
+    category = serializers.CharField(max_length=255, required=False)
+    class Meta:
+        model = Appointment
+        fields = ['name', 'email', 'phone_number', 'address','gender', 'service', 'category',
+                  'appointment_date', 'payment_method', 'message' ]
+
+
+class AppointmentListSerializer(serializers.ModelSerializer):
     services = ServiceDetailSerializer(many=True, read_only=True)
     category = ServiceDetailSerializer(many=True, read_only=True)
     total_price = serializers.SerializerMethodField()

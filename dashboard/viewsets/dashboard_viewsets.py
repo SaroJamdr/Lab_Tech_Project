@@ -5,7 +5,7 @@ from services.models import Service
 from inquiries.models import Inquiry
 from inquiries.serializers.inquiries_serializer import InquirySerializer
 from appointments.models import Appointment
-from appointments.serializers.appointment_serializer import AppointmentSerializer
+from appointments.serializers.appointment_serializer import AppointmentListSerializer
 from rest_framework.permissions import IsAdminUser
 
 class DashboardView(APIView):
@@ -16,7 +16,7 @@ class DashboardView(APIView):
         inquiry = Inquiry.objects.all()
 
         service_data = ServiceSerializer(services, many=True).data
-        appointment_data = AppointmentSerializer(appointment, many=True).data
+        appointment_data = AppointmentListSerializer(appointment, many=True).data
         inquiry_data = InquirySerializer(inquiry, many=True).data
         
 

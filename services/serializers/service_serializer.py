@@ -5,12 +5,13 @@ from categories.serializers.categories_serializer import CategorySerializer, Sub
 
 
 class ServiceSerializer(serializers.ModelSerializer):
-    category = CategorySerializer(many=True, read_only=True)
+    category = serializers.PrimaryKeyRelatedField(many=True, queryset=Category.objects.all())
+    category_name = CategorySerializer(many=True, read_only=True, source='category')
     sub_category= SubCategorySerializer(many= True, read_only= True)
         
     class Meta:
         model = Service
-        fields = ('name', 'description', 'price', 'category','sub_category' )
+        fields = ('name', 'description', 'price', 'category', 'category_name','sub_category' )
 
     def validate(self, attrs):
         categories = attrs.get('category', [])

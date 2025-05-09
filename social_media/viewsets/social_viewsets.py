@@ -5,12 +5,10 @@ from ..serializers.social_serializer import (
 )
 from ..models import Social_media
 from rest_framework.permissions import IsAdminUser
-from ..utilities.pagination import MyPageNumberPagination
 
 class SocialMediaViewSet(viewsets.ModelViewSet):
     queryset= Social_media.objects.all().order_by('-id')
     serializer_class = SocialMediaListSerializer
-    pagination_class= [MyPageNumberPagination]
     permission_classes= [IsAdminUser]
 
     
