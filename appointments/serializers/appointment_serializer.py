@@ -39,12 +39,13 @@ class AppointmentListSerializer(serializers.ModelSerializer):
 
     def get_total_price(self, obj):
         return sum(service.price for service in obj.services.all())
-
+    
     def get_appointment_book(self, obj):
         if obj.payment_method == 'online':
             return 'online'
         else:
             return 'at clinic'
+
 
     def validate_phone_number(self, value):
         pattern =  r'^\+[1-9]\d{1,3}\d{7,12}$'

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Appointment Management{% endblock %}
+{% block content %}
+
+  <main class="container">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <div class="bg-indigo bg-opacity-10 text-indigo rounded-circle d-flex justify-content-center align-items-center icon-circle">
+        <i class="fas fa-home"></i>
+        <div>
+    </div>
+        <h1 class="h5 fw-semibold mb-0">Appointment Management</h1>
+        
+      </div>
+
+      <div class="position-relative mb-0">
+        <i class="fas fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary small"></i>
+        <input type="text" class="form-control ps-5" placeholder="Search" />
+      </div>
+
+
+      <button class="btn btn-danger btn-sm ms-auto">Filter</button>
+      <button class="btn btn-success btn-sm ms-auto">Add Appointment</button>
+    </div>
+
+    <section class="fullscreen-section">
+      <div class="table-responsive flex-grow-1">
+        <table class="table table-sm table-borderless mb-0 small text-indigo">
+          <thead>
+            <tr>
+              <th scope="col" class="text-start">SN <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start">Full Name <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start">Email <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start">Phone <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start">Gender <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start col-2">Services <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start">Amount <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start">Payment Option <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start">Message <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start">Appointment Booked <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start">Actions <i class="fas fa-sort"></i></th>
+            </tr>
+          </thead>
+          <tbody class="text-dark">
+            {% for app in appointments %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ app.name }}</td>
+              <td>{{ app.email }}</td>
+              <td>{{ app.phone_number }}</td>
+              <td>{{ app.gender }}</td>
+
+                <td>
+              {% for service in app.services_with_categories %}
+                    {{ service.service_name }}, {{ service.subcategory }}
+                    {% comment %} <td>{{ service.parent_category }}</td> {% endcomment %}
+            {% endfor %}
+                </td>
+              <td>Rs. {{ app.total_price }}</td>
+              <td>{{ app.payment_method }}</td>
+              <td>{{ app.message }}</td>
+              <td>{{ app.get_appointment_book}}</td>
+              <td>
+                <button class="btn btn-sm btn-primary">Edit</button>
+                <button class="btn btn-sm btn-danger">Delete</button>
+              </td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="11" class="text-center">No appointments available.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+{%endblock%}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Inquiry</title>
+</head>
+<body>
+    <h2>Customer Inquiry</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    <hr>
+
+    <h3>Existing Categories</h3>
+    <ul>
+        {% for cat in categories %}
+            {% if not cat.parent %}
+                <li><strong>{{ cat.category }}</strong>
+                    <ul>
+                        {% for sub in cat.sub_categories.all %}
+                            <li>{{ sub.category }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+
+</body>
+</html>

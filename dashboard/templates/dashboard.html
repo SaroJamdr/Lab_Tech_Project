@@ -1,122 +1,6 @@
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <title>Dashboard</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    body, html {
-      height: 100%;
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f8f9fa;
-    }
-    #app {
-      height: 100vh;
-      display: flex;
-      background: white;
-    }
-    nav.sidebar {
-      width: 16rem;
-      border-right: 1px solid #dee2e6;
-      overflow-y: auto;
-    }
-    main.content-area {
-      flex-grow: 1;
-      overflow-y: auto;
-      padding: 1rem 1.5rem;
-      background-color: #f8f9fa;
-      display: flex;
-      flex-direction: column;
-    }
-    header.topbar {
-      border-bottom: 1px solid #dee2e6;
-      background: white;
-      padding: 1rem 1.5rem;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 1rem;
-      flex-shrink: 0;
-    }
-  </style>
-</head>
-<body>
-  <div id="app">
-    <!-- Sidebar -->
-    <nav class="sidebar d-flex flex-column p-3 bg-white">
-      <div class="d-flex align-items-center mb-3">
-        <span class="fw-semibold fs-5 ms-2 user-select-none">Lab Tech</span>
-      </div>
-      <div class="position-relative mb-3">
-        <i class="fas fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary small"></i>
-        <input type="text" class="form-control ps-5" placeholder="Search" />
-      </div>
-      <ul class="nav flex-column mb-2">
-        <li class="nav-item mb-1">
-          <a href="#" class="nav-link active d-flex align-items-center text-indigo bg-indigo bg-opacity-10 rounded">
-            <i class="fas fa-home me-2 small"></i> Dashboard
-          </a>
-        </li>
-      </ul>
-      <div class="text-success fw-semibold small mb-1 user-select-none">Management</div>
-      <ul class="nav flex-column mb-3 small text-secondary">
-        <li class="nav-item d-flex align-items-center mb-1">
-          <i class="fas fa-folder-open me-2"></i> Service Management
-        </li>
-        <li class="nav-item d-flex align-items-center mb-1">
-          <i class="fas fa-th-large me-2"></i>Booking Management
-        </li>
-      </ul>
-      <div class="text-success fw-semibold small mb-1 user-select-none">Manage</div>
-      <ul class="nav flex-column small text-secondary">
-        <li>
-          <button class="btn btn-toggle align-items-center rounded collapsed w-100 text-start d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#aboutUsCollapse" aria-expanded="false" aria-controls="aboutUsCollapse">
-            <span><i class="fas fa-users me-2"></i> About Us</span>
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="collapse ps-4" id="aboutUsCollapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="#" class="link-dark d-block text-decoration-none">Banner &amp; Text</a></li>
-              <li><a href="#" class="link-dark d-block text-decoration-none">Meet the Team</a></li>
-              <li><a href="#" class="link-dark d-block text-decoration-none">Gallery</a></li>
-              <li><a href="#" class="link-dark d-block text-decoration-none">Pop Up</a></li>
-            </ul>
-          </div>
-        </li>
-        <li class="mt-2">
-          <button class="btn btn-toggle align-items-center rounded collapsed w-100 text-start d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#contactUsCollapse" aria-expanded="false" aria-controls="contactUsCollapse">
-            <span><i class="fas fa-question-circle me-2"></i> Contact Us</span>
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="collapse ps-4" id="contactUsCollapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="#" class="link-dark d-block text-decoration-none">Customer Inquiries</a></li>
-              <li><a href="#" class="link-dark d-block text-decoration-none">Branch Details</a></li>
-              <li><a href="#" class="link-dark d-block text-decoration-none">Social Media</a></li>
-              <li><a href="#" class="link-dark d-block text-decoration-none">FAQs</a></li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-      <button class="btn btn-link text-secondary mt-auto d-flex align-items-center gap-2 p-0">
-        <i class="fas fa-sign-out-alt small"></i> Logout
-      </button>
-    </nav>
-    <!-- Main content -->
-    <div class="d-flex flex-column flex-grow-1">
-      <!-- Top bar -->
-      <header class="topbar">
-        <div class="bg-indigo text-white rounded-circle d-flex justify-content-center align-items-center" style="width: 2rem; height: 2rem;">
-          <i class="fas fa-user"></i>
-        </div>
-        <div class="text-end ms-2 small user-select-none">
-          <strong class="d-block fw-semibold text-dark">Yunika</strong>
-          <span class="text-muted">admin@gmail.com</span>
-        </div>
-      </header>
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
       <!-- Content area -->
       <main class="content-area">
         <nav class="d-flex align-items-center text-indigo small mb-3 user-select-none">
@@ -199,7 +83,7 @@
                   <tr>
                     <td>{{ forloop.counter }}</td>
                     <td>{{ app.name }}</td>
-                    <td>{{ app.price }}</td>
+                    <td>{{ app.total_price }}</td>
                     <td>{{ app.email }}</td>
                   </tr>
                   {% empty %}
@@ -233,6 +117,16 @@
                   </tr>
                 </thead>
                 <tbody class="text-dark">
+                  {% for app in online_appointments %}
+                  <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ app.name }}</td>
+                    <td>{{ app.total_price }}</td>
+                    <td>{{ app.email }}</td>
+                  </tr>
+                  {% empty %}
+                  <tr><td colspan="5">No offline appointments.</td></tr>
+                  {% endfor %}
                 </tbody>
               </table>
             </div>
@@ -279,8 +173,4 @@
           </section>
         </div>
       </main>
-    </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+      {% endblock %}

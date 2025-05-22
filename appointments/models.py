@@ -16,7 +16,7 @@ class Appointment(models.Model):
     address= models.CharField(max_length=255)
     gender = models.CharField(choices=gender_choices, max_length=10)
     appointment_date = models.DateField()
-    payment_method= models.CharField(choices=payment_choices, default='ofline')
+    payment_method= models.CharField(choices=payment_choices, default='ofline',max_length=10)
     message= models.TextField()
     created_date= models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -27,3 +27,21 @@ class Appointment(models.Model):
     @property
     def total_price(self):
         return sum(service.price for service in self.services.all())
+    
+    @property
+    def get_appointment_book(self):
+        if self.payment_method == 'online':
+            return 'online'
+        else:
+            return 'at clinic'
+        
+    @property
+    def services_with_categories(self):
+        services_info = []
+        for service in self.services.all():
+            services_info.append({
+                'service_name': service.name,
+                'subcategory': service.category.name,  # Directly access the category
+                # 'parent_category': service.category.parent_category.name if service.category.parent_category else None,
+            })
+        return services_info

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Service Management{% endblock %}
+{% block content %}
+
+  <main class="container-fluid">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <div class="bg-indigo bg-opacity-10 text-indigo rounded-circle d-flex justify-content-center align-items-center icon-circle">
+        <i class="fas fa-home"></i>
+        <div>
+    </div>
+        <h1 class="h5 fw-semibold mb-0">Service Management</h1>
+        <p class="text-muted small mb-0 user-select-none">Effectively manage the Appointment Services</p>
+      </div>
+
+      <div class="position-relative mb-0">
+        <i class="fas fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary small"></i>
+        <input type="text" class="form-control ps-5" placeholder="Search" />
+      </div>
+
+
+      <button class="btn btn-danger btn-sm ms-auto">Filter</button>
+      <button class="btn btn-success btn-sm ms-auto">Add Service</button>
+    </div>
+
+    <section class="fullscreen-section">
+      <div class="table-responsive flex-grow-1">
+        <table class="table table-sm table-borderless mb-0 small text-indigo">
+          <thead>
+            <tr>
+              <th scope="col" class="text-start">SN <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start">Name <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start">Category/sub-category <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start">price <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start">Description <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start">Actions <i class="fas fa-sort"></i></th>
+            </tr>
+          </thead>
+          <tbody class="text-dark">
+            {% for serv in services %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ serv.name }}</td>
+              <td>
+                {% for cat, subs in serv.get_category_with_subs %}
+                {{ cat.category }} / 
+                {% for sub in subs %}{{ sub.category }}</li>
+            {% endfor %}
+            {% endfor %}
+              </td>
+
+              <td>{{ serv.price }}</td>
+              <td>{{ serv.description }}</td>
+
+              <td>
+                <button class="btn btn-sm btn-primary">Edit</button>
+                <button class="btn btn-sm btn-danger">Delete</button>
+              </td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="11" class="text-center">No services available.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+{%endblock%}

@@ -15,3 +15,6 @@ class Service(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_category_with_subs(self):
+        return [(cat, cat.sub_categories.all()) for cat in self.category.all()]

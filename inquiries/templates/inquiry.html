@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %} Inquiries{% endblock %}
+{% block content %}
+
+  <main class="container-fluid">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <div class="bg-indigo bg-opacity-10 text-indigo rounded-circle d-flex justify-content-center align-items-center icon-circle">
+        <i class="fas fa-home"></i>
+        <div>
+    </div>
+        <h1 class="h5 fw-semibold mb-0">Customer Inquiries</h1>
+    </div>
+
+      <div class="position-relative mb-0">
+        <i class="fas fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary small"></i>
+        <input type="text" class="form-control ps-5" placeholder="Search" />
+      </div>
+    </div>
+
+    <section class="fullscreen-section">
+      <div class="table-responsive flex-grow-1">
+        <table class="table table-sm table-borderless mb-0 small text-indigo">
+          <thead>
+            <tr>
+              <th scope="col" class="text-start">SN <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start">Name <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start">Email <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start">Phone <i class="fas fa-sort"></i></th>
+              <th scope="col" class="text-start">Message <i class="fas fa-sort"></i></th>
+            </tr>
+          </thead>
+          <tbody class="text-dark">
+            {% for inq in inquiries %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ inq.name }}</td>
+              <td>{{ inq.email }}</td>
+              <td>{{ inq.phone }}</td>
+              <td>{{ inq.message }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="11" class="text-center">There is no any customer inquiry.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+{%endblock%}

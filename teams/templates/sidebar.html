@@ -1,0 +1,71 @@
+<nav class="sidebar d-flex flex-column p-3 bg-white">
+    <div class="d-flex align-items-center mb-3">
+      <span class="fw-semibold fs-5 ms-2 user-select-none">Lab Tech</span>
+    </div>
+    <div class="position-relative mb-3">
+      <i class="fas fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary small"></i>
+      <input type="text" class="form-control ps-5" placeholder="Search" />
+    </div>
+    <ul class="nav flex-column mb-2">
+      <li class="nav-item mb-1">
+        <a href="#" class="nav-link active d-flex align-items-center text-indigo bg-indigo bg-opacity-10 rounded">
+          <i class="fas fa-home me-2 small"></i> Dashboard
+        </a>
+      </li>
+    </ul>
+    <div class="text-success fw-semibold small mb-1 user-select-none">Management</div>
+    <ul class="nav flex-column mb-3 small text-secondary">
+      <li class="nav-item d-flex align-items-center mb-1">
+        <i class="fas fa-folder-open me-2"></i> Service Management
+      </li>
+      <li class="nav-item d-flex align-items-center mb-1">
+        <i class="fas fa-th-large me-2"></i>Booking Management
+      </li>
+    </ul>
+    <div class="text-success fw-semibold small mb-1 user-select-none">Manage</div>
+    <ul class="nav flex-column small text-secondary">
+      <li>
+        <button class="btn btn-toggle align-items-center rounded collapsed w-100 text-start d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#aboutUsCollapse" aria-expanded="false" aria-controls="aboutUsCollapse">
+          <span><i class="fas fa-users me-2"></i> About Us</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="collapse ps-4" id="aboutUsCollapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark d-block text-decoration-none">Banner &amp; Text</a></li>
+            <li><a href="#" class="link-dark d-block text-decoration-none">Meet the Team</a></li>
+            <li><a href="#" class="link-dark d-block text-decoration-none">Gallery</a></li>
+            <li><a href="#" class="link-dark d-block text-decoration-none">Pop Up</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mt-2">
+        <button class="btn btn-toggle align-items-center rounded collapsed w-100 text-start d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#contactUsCollapse" aria-expanded="false" aria-controls="contactUsCollapse">
+          <span><i class="fas fa-question-circle me-2"></i> Contact Us</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="collapse ps-4" id="contactUsCollapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark d-block text-decoration-none">Customer Inquiries</a></li>
+            <li><a href="#" class="link-dark d-block text-decoration-none">Branch Details</a></li>
+            <li><a href="#" class="link-dark d-block text-decoration-none">Social Media</a></li>
+            <li><a href="#" class="link-dark d-block text-decoration-none">FAQs</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <button class="btn btn-link text-secondary mt-auto d-flex align-items-center gap-2 p-0">
+      <i class="fas fa-sign-out-alt small"></i> Logout
+    </button>
+  </nav>
+  <!-- Main content -->
+  <div class="d-flex flex-column flex-grow-1">
+    <!-- Top bar -->
+    <header class="topbar">
+      <div class="bg-indigo text-white rounded-circle d-flex justify-content-center align-items-center" style="width: 2rem; height: 2rem;">
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="text-end ms-2 small user-select-none">
+        <strong class="d-block fw-semibold text-dark">{{admin_name}}</strong>
+        <span class="text-muted">{{admin_email}}</span>
+      </div>
+    </header>

@@ -21,7 +21,7 @@ INSTALLED_APPS = [
     'appointments', 'banners', 'branches', 'categories', 'gallery',
     'pop_ups', 'services', 'social_media', 'teams', 'inquiries', 'FAQs',
     'accounts', 'revenue', 'dashboard',
-    'django_rest_passwordreset'
+    # 'django_rest_passwordreset',  
 
 ]
 # AUTH_USER_MODEL = 'accounts.CustomUser'
